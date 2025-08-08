@@ -16,7 +16,7 @@ if st.checkbox("Show Raw Data"):
 # Filter Options
 st.sidebar.header("Filter Options")
 
-selected_city = st.sidebar.multiselect("Select City", options=df['City'].dropna().unique())
+selected_city = st.sidebar.multiselect("Select City", options=df['City location'].dropna().unique())
 selected_industry = st.sidebar.multiselect("Select Industry", options=df['Industry Vertical'].dropna().unique())
 selected_year = st.sidebar.multiselect("Select Year", options=df['Year'].dropna().unique())
 
@@ -75,3 +75,4 @@ st.pyplot(fig4)
 # Footer
 st.markdown("---")
 st.markdown("✅ **Created by Vi Jay | Cleaned Startup Dataset Visualization**")
+
