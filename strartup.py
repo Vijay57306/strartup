@@ -23,7 +23,7 @@ selected_year = st.sidebar.multiselect("Select Year", options=df['Year'].dropna(
 filtered_df = df.copy()
 
 if selected_city:
-    filtered_df = filtered_df[filtered_df['City'].isin(selected_city)]
+    filtered_df = filtered_df[filtered_df['City location'].isin(selected_city)]
 if selected_industry:
     filtered_df = filtered_df[filtered_df['Industry Vertical'].isin(selected_industry)]
 if selected_year:
@@ -54,7 +54,7 @@ st.pyplot(fig2)
 
 # --- Visual 3: Top Cities by Funding Count ---
 st.subheader("Top Cities by Funding Count")
-city_counts = filtered_df['City'].value_counts().nlargest(10)
+city_counts = filtered_df['City location'].value_counts().nlargest(10)
 
 fig3, ax3 = plt.subplots()
 sns.barplot(x=city_counts.values, y=city_counts.index, ax=ax3)
@@ -75,4 +75,5 @@ st.pyplot(fig4)
 # Footer
 st.markdown("---")
 st.markdown("✅ **Created by Vi Jay | Cleaned Startup Dataset Visualization**")
+
 
