@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load the dataset
-df = pd.read_csv("cleaned_startup_project.csv", encoding='latin1')
+df = pd.read_csv("cleaned_startup_project", encoding='latin1')
 
 st.title("Startup Funding Analysis")
 
@@ -90,3 +90,4 @@ if 'Industry Vertical' in filtered_df.columns and 'Amount in USD' in filtered_df
 
 st.markdown("---")
 st.markdown("✅ Developed by Vi Jay | Startup Data Visualization")
+
