@@ -1,11 +1,7 @@
-# app.py
 import streamlit as st
 import pandas as pd
-import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-import warnings
-warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Indian Startup Funding Dashboard", layout="wide")
 
@@ -135,3 +131,4 @@ st.markdown(f"""
 - 🏭 **Top Industry:** {filtered_df["Industry Vertical"].mode()[0]}
 - 👨‍💼 **Most Active Investor:** {filtered_df["Investors Name"].mode()[0]}
 """)
+
