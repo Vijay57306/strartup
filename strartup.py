@@ -14,7 +14,6 @@ df = pd.read_csv("cleaned startup_project.csv")
 df["Amount in USD"] = pd.to_numeric(df["Amount in USD"], errors="coerce")
 df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
 
-# Drop unnecessary nulls
 df.dropna(
     subset=[
         "Amount in USD",
@@ -27,7 +26,6 @@ df.dropna(
     inplace=True,
 )
 
-# Add Year and Month columns
 df["Year"] = df["Date"].dt.year
 df["Month"] = df["Date"].dt.month
 
@@ -57,6 +55,7 @@ amount_range = st.sidebar.slider(
 )
 
 show_top_10 = st.sidebar.checkbox("Show only Top 10 in charts", value=True)
+show_data = st.sidebar.checkbox("📄 Show Data Records", value=True)
 
 # --- Apply Filters ---
 filtered_df = df[
@@ -82,10 +81,11 @@ def render_line_chart(data, x, y, title):
     ax.tick_params(axis="x", rotation=45)
     st.pyplot(fig)
 
+# --- Data Display ---
+st.markdown(f"### 📊 Showing {len(filtered_df)} Records After Filtering")
 
-# --- Data Preview ---
-st.subheader("📊 Filtered Dataset Preview")
-st.dataframe(filtered_df.head(50), use_container_width=True)
+if show_data:
+    st.dataframe(filtered_df, use_container_width=True, height=400)
 
 if filtered_df.empty:
     st.warning("⚠️ No data available for the selected filters.")
@@ -179,6 +179,4 @@ else:
         city_count.columns = ["City location", "Count"]
         render_bar_chart(city_count, "Count", "City location", "Startups per City")
 
-st.success("✅ Dashboard ready! Explore funding trends interactively.")
-
-
+st.success("✅ Dashboard ready! Explore data and visual insights.")
