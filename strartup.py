@@ -8,7 +8,7 @@ st.set_page_config(page_title="🚀 Startup Funding Dashboard", layout="wide")
 st.title("🚀 Startup Funding Analysis")
 
 # --- Load Dataset ---
-df = pd.read_csv("Startup.csv")
+df = pd.read_csv("cleaned startup_project.csv")
 
 # --- Clean & Enrich ---
 df["Amount in USD"] = pd.to_numeric(df["Amount in USD"], errors="coerce")
@@ -187,3 +187,4 @@ else:
         if show_top_10:
             city_count = city_count.head(10)
         render_bar_chart(city_count, "count", "City Location", "Startups per City")
+
